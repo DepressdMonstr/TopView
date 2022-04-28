@@ -14,26 +14,26 @@ func _ready():
 
 func _physics_process(delta):
   
-  vel = Vector2()
+	vel = Vector2()
   
   # inputs
-  if Input.is_action_pressed("move_up"):
-	vel.y -= 1
-	facingDir = Vector2(0, -1)
+	if Input.is_action_pressed("move_up"):
+		vel.y -= 1
+		facingDir = Vector2(0, -1)
+		
+	if Input.is_action_pressed("move_down"):
+		vel.y += 1
+		facingDir = Vector2(0, 1)
+		
+	if Input.is_action_pressed("move_left"):
+		vel.x -= 1
+		facingDir = Vector2(-1, 0)
 	
-  if Input.is_action_pressed("move_down"):
-	vel.y += 1
-	facingDir = Vector2(0, 1)
-	
-  if Input.is_action_pressed("move_left"):
-	vel.x -= 1
-	facingDir = Vector2(-1, 0)
-	
-  if Input.is_action_pressed("move_right"):
-	vel.x += 1
-	facingDir = Vector2(1, 0)
+	if Input.is_action_pressed("move_right"):
+		vel.x += 1
+		facingDir = Vector2(1, 0)
   
-  vel = vel.normalized()
+	vel = vel.normalized()
   
   # move the player
-  move_and_slide(vel * moveSpeed)
+	move_and_slide(vel * moveSpeed)
