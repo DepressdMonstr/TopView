@@ -20,18 +20,22 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_up"):
 		vel.y -= 1
 		facingDir = Vector2(0, -1)
+		rotation_degrees = -90
 		
 	if Input.is_action_pressed("move_down"):
 		vel.y += 1
 		facingDir = Vector2(0, 1)
+		rotation_degrees = 90
 		
 	if Input.is_action_pressed("move_left"):
 		vel.x -= 1
 		facingDir = Vector2(-1, 0)
+		rotation_degrees = -180
 	
 	if Input.is_action_pressed("move_right"):
 		vel.x += 1
 		facingDir = Vector2(1, 0)
+		rotation_degrees = 0
   
 	vel = vel.normalized()
   
