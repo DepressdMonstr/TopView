@@ -41,3 +41,10 @@ func _physics_process(delta):
   
   # move the player
 	move_and_slide(vel * moveSpeed)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("shoot"):
+		shoot()
+
+func shoot():
+	print("the player shot")
