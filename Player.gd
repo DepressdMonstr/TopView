@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+export (PackedScene) var Bullet
+
+onready var end_of_gun = $EndOfGun
+
 var curHp : int = 10
 var maxHp : int = 10
 var moveSpeed : int = 250
@@ -12,10 +16,12 @@ onready var rayCast = get_node("RayCast2D")
 func _ready():
 	pass # Replace with function body.
 
+
+
 func _physics_process(delta):
   
 	vel = Vector2()
-  
+	
   # inputs
 	if Input.is_action_pressed("move_up"):
 		vel.y -= 1
@@ -41,10 +47,17 @@ func _physics_process(delta):
   
   # move the player
 	move_and_slide(vel * moveSpeed)
+	look_at(get_global_mouse_position())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("shoot"):
 		shoot()
 
 func shoot():
-	print("the player shot")
+	var bullet_instance = Bullet.instance()
+	add_child(bullet_instance)
+	bullet_instance.global_position = end_of_gun.global_position
+	var target = get_global_mouse_position()
+	var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
+	bullet_instance.set_direction(direction_to_mouse)
+
