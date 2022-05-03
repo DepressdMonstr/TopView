@@ -55,7 +55,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func shoot():
 	var bullet_instance = Bullet.instance()
-	add_child(bullet_instance)
+	owner.add_child(bullet_instance)
+	bullet_instance.transform = $EndOfGun.global_transform
 	bullet_instance.global_position = end_of_gun.global_position
 	var target = get_global_mouse_position()
 	var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
