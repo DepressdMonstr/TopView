@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://art/Soldier/soldier1_reload.png" type="Texture" id=1]
+[ext_resource path="res://art/Soldier/soldier1_silencer.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 30.0
-height = 12.0
+radius = 42.0
+height = 0.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+Bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
@@ -21,6 +23,4 @@ shape = SubResource( 1 )
 enabled = true
 cast_to = Vector2( 50, 0 )
 
-[node name="Bullet" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
+[node name="EndOfGun" type="Position2D" parent="."]
