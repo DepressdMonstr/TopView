@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://art/Zombie/Zombie3.png" type="Texture" id=1]
 [ext_resource path="res://art/Zombie/Zombie4.png" type="Texture" id=2]
 [ext_resource path="res://art/Zombie/Zombie1.png" type="Texture" id=3]
 [ext_resource path="res://art/Zombie/Zombie2.png" type="Texture" id=4]
+[ext_resource path="res://Enemy.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -17,21 +18,20 @@ animations = [ {
 radius = 277.551
 height = 130.612
 
-[node name="Enemy" type="RigidBody2D"]
-scale = Vector2( 0.35, 0.35 )
-collision_mask = 0
-gravity_scale = 0.0
+[node name="Enemy" type="KinematicBody2D"]
+script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 1.5708
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 0.28, 0.28 )
 frames = SubResource( 1 )
 animation = "EnemyWalk"
-frame = 1
+frame = 2
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 0.35, 0.35 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.35, 0.35 )
+scale = Vector2( 0.1225, 0.1225 )
 shape = SubResource( 2 )

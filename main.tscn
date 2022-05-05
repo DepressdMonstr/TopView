@@ -1,14 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PathFollow2D.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 204, 193, 0, 0, 0, 0, 516, 136, 0, 0, 0, 0, 730, 232, 0, 0, 0, 0, 600, 348, 0, 0, 0, 0, 433, 373, 0, 0, 0, 0, 277, 467, 0, 0, 0, 0, 283, 525, 0, 0, 0, 0, 390, 539, 0, 0, 0, 0, 471, 463, 0, 0, 0, 0, 400, 578, 0, 0, 0, 0, 283, 567, 0, 0, 0, 0, 125, 514, 0, 0, 0, 0, 101, 507, 0, 0, 0, 0, 152, 338, 0, 0, 0, 0, 167, 284, 0, 0, 0, 0, 174, 242, 0, 0, 0, 0, 204, 193 )
+}
 
 [node name="Main" type="Node2D"]
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 182, 356 )
+rotation = 1.5708
+scale = Vector2( 0.1225, 0.1225 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 525, 551 )
 rotation = -1.5708
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 507, 47 )
-rotation = 1.5708
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 204, 193 )
+rotation = -0.180701
+script = ExtResource( 3 )
+
+[node name="Enemy" parent="Path2D/PathFollow2D" instance=ExtResource( 2 )]
+rotation = 1.7515
