@@ -6,6 +6,9 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 525, 551 )
+rotation = -1.5708
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 110, 1 )
+position = Vector2( 507, 47 )
+rotation = 1.5708
