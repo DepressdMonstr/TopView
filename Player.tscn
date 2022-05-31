@@ -24,3 +24,7 @@ enabled = true
 cast_to = Vector2( 50, 0 )
 
 [node name="EndOfGun" type="Position2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.75, 1.75 )
